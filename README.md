@@ -73,6 +73,10 @@ You can run this via an IDE such as I use IntelliJ Ultimate 2019.2 or from the c
 >mvn clean package
 >java -jar target/mapstore-1.0-SNAPSHOT-jar-with-dependencies.jar 
 
+So you'll notice a query example that uses a simple predicate to locate all the rivers for the state of GA.
+The output will then attempt to create a google maps link that will allow you to view the location.
+That's it.
+
 Your output should look like the following:
 ...
 SimpleStore - loading all keys
