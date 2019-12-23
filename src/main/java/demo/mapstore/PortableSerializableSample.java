@@ -42,7 +42,7 @@ public class PortableSerializableSample {
 
         // Start the Embedded Hazelcast Cluster Member.
         HazelcastInstance hz = Hazelcast.newHazelcastInstance(config);
-        //HazelcastInstance hz2 = Hazelcast.newHazelcastInstance(config);
+        HazelcastInstance hz2 = Hazelcast.newHazelcastInstance(config);
         //HazelcastInstance hz3 = Hazelcast.newHazelcastInstance(config);
 
         //Navigable_Waterway can be used here
@@ -56,12 +56,45 @@ public class PortableSerializableSample {
             System.out.println(item.OBJECTID+" = "+item.RIVERNAME+" https://www.google.com/maps/place/"+search);
         }
 
+        Navigable_Waterway myNewWaterway = new Navigable_Waterway();
+        myNewWaterway.ID="8675301";
+        myNewWaterway.LENGTH="123123";
+            myNewWaterway.DIR="123123";
+            myNewWaterway.LINKNUM="123123";
+            myNewWaterway.ANODE="123123";
+            myNewWaterway.BNODE="123123";
+            myNewWaterway.LINKNAME="123123";
+            myNewWaterway.RIVERNAME="Terrys River From Too Much Rain";
+            myNewWaterway.AMILE="123123";
+            myNewWaterway.BMILE="123123";
+            myNewWaterway.LENGTH1="123123";
+            myNewWaterway.LENGTH_SRC="123123";
+            myNewWaterway.SHAPE_SRC="123123";
+            myNewWaterway.LINKTYPE="123123";
+            myNewWaterway.CTRL_DEPTH="123123";
+            myNewWaterway.WATERWAY="123123";
+            myNewWaterway.GEO_CLASS="123123";
+            myNewWaterway.FUNC_CLASS="123123";
+            myNewWaterway.WTWY_TYPE="123123";
+            myNewWaterway.CHART_ID="123123";
+            myNewWaterway.NUM_PAIRS="123123";
+            myNewWaterway.WHO_MOD="123123";
+            myNewWaterway.DATE_MOD="123123";
+            myNewWaterway.HEADING="123123";
+            myNewWaterway.STATE="GA";
+            myNewWaterway.FIPS="123123";
+            myNewWaterway.FIPS2="123123";
+            myNewWaterway.NON_US="123123";
+            myNewWaterway.Shape_Length="123123";
+
+            map.put("8675301",myNewWaterway);
+
         System.out.println(mapName+": "+map.size()+" map entries");
 
         // airport stuff
-        IMap<String,String> airports = hz.getMap("airports");
-        String airport = airports.get("1212");
-        System.out.println(airport);
+        //IMap<String,String> airports = hz.getMap("airports");
+        //String airport = airports.get("1212");
+        //System.out.println(airport);
 
         //hz.shutdown();
         //hz2.shutdown();

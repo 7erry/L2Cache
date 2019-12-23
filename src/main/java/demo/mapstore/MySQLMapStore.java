@@ -47,6 +47,43 @@ public class MySQLMapStore implements MapStore<String, PortableSerializableSampl
         public void store(String key, PortableSerializableSample.Navigable_Waterway value) {
             System.out.println("SimpleStore - storing key: " + key);
 
+            String sql = "INSERT INTO Navigable_Waterway_Lines " +
+                "VALUES ("+
+                    "\""+key+"\","+
+                    "\""+value.ID+"\","+
+                    "\""+value.LENGTH+"\","+
+                    "\""+value.DIR+"\","+
+                    "\""+value.LINKNUM+"\","+
+                    "\""+value.ANODE+"\","+
+                    "\""+value.BNODE+"\","+
+                    "\""+value.LINKNAME+"\","+
+                    "\""+value.RIVERNAME+"\","+
+                    "\""+value.AMILE+"\","+
+                    "\""+value.BMILE+"\","+
+                    "\""+value.LENGTH1+"\","+
+                    "\""+value.LENGTH_SRC+"\","+
+                    "\""+value.SHAPE_SRC+"\","+
+                    "\""+value.LINKTYPE+"\","+
+                    "\""+value.CTRL_DEPTH+"\","+
+                    "\""+value.WATERWAY+"\","+
+                    "\""+value.GEO_CLASS+"\","+
+                    "\""+value.FUNC_CLASS+"\","+
+                    "\""+value.WTWY_TYPE+"\","+
+                    "\""+value.CHART_ID+"\","+
+                    "\""+value.NUM_PAIRS+"\","+
+                    "\""+value.WHO_MOD+"\","+
+                    "\""+value.DATE_MOD+"\","+
+                    "\""+value.HEADING+"\","+
+                    "\""+value.STATE+"\","+
+                    "\""+value.FIPS+"\","+
+                    "\""+value.FIPS2+"\","+
+                    "\""+value.NON_US+"\","+
+                    "\""+value.Shape_Length+"\""+
+                    ")";
+        System.out.println(sql);
+        try{
+            stmt.executeUpdate(sql);
+        }catch(Exception e){ System.out.println(e);}
             /**
              * place insert statement here
              * **/
