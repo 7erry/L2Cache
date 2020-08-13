@@ -1,0 +1,26 @@
+Use case: Market data last value cache
+
+Our market data infrastructure supports two major modes of operation; tick-by-tick and snapshot. Market data updates for a given security can be regarded as a key (the security id, such as a ticker â€“ IBM US Equity) and an associated set of key+value pairs representing the fields which have changed as a result of exchange order book activity. For example, a tick may comprise:
+
+Security: IBM US
+Updates: 
+BID = 123.45
+ASK = 123.78
+VOLUME = 100000
+STATUS = TRADING
+..etc
+
+Within ExodusPoint, a common use case is that users wish to â€˜snapâ€™ the latest (most current) value of these fields rather than consuming every update.
+
+We would therefore like to explore solutions which allow us to write to a large cache of values and to read these on-demand, with key requirements for the PoC summarised below:
+
+â€¢	The structure of the cache would be as per the example above: key -> set (field -> value). Multiple writers and multiple readers must be supported
+â€¢	A security universe of up to 250k securities is envisaged, which could be split over multiple cache instances
+â€¢	Parallel write performance should be latency+throughput optimised â€“ under load, the cache should support up to 100 updates per second for 100k liquid securities
+â€¢	Parallel read performance is less critical (users may connect via REST for example)
+â€¢	If the solution supports authorization / entitlement management capabilities, this should be demonstrated (e.g. to restrict access to a user to particular cache entries such as securities related to a particular exchange)
+â€¢	A high-availability configuration in which we are insulated from individual node failures is desirable
+â€¢	Writers and readers are likely to be implemented in C++ -support for this language should be demonstrated
+â€¢	A callback mechanism to notify listeners (readers) of cache write activity is desirable
+â€¢	Monitoring for cache health is desirable, including integration with third party tools such as splunk and big panda.
+
